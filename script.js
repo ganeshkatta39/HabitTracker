@@ -7,7 +7,7 @@ function addTask(taskArr) {
     if (taskArr[i][1].status == false) {
       let taskLi = document.createElement("li");
       taskLi.innerHTML = `<b>+${taskArr[i][1].reward}</b> &nbsp ${taskArr[i][1].name}`;
-      taskLi.addEventListener("click", (ele) => {
+      taskLi.addEventListener("dblclick", (ele) => {
         update(ref(database, "points/" + "-NfxCecS27A_diIPkrRd"), {
           value: parseInt(points.innerHTML) + parseInt(taskArr[i][1].reward),
         });
@@ -22,7 +22,7 @@ function addTask(taskArr) {
 
 // resetting tasks
 let resetButton = document.getElementById("reset");
-resetButton.addEventListener("click", () => {
+resetButton.addEventListener("dblclick", () => {
   onValue(tasksInDb, function (snapshot) {
     let tasksArr = Object.entries(snapshot.val());
     for (let i = 0; i < tasksArr.length; i++) {
